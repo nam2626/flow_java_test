@@ -26,7 +26,8 @@ jobs: #진행되는 잡에 대한 정보
     - name: Add SSH key  #액션을 이용하여 개인키 만드는 부분
       uses: webfactory/ssh-agent@v0.5.3
       with:
-        ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}  #해당 깃허브 리파지토리 셋팅에서 secrets에 개발서버 개인키 등록
+        ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}  #해당 깃허브 리파지토리 셋팅에서 secrets에 개발서버 공개키 등록 id_rsa.pub,  authorized_keys에도 등록
+        #/etc/ssh/sshd_config 에서 sudo 로 열어서 PubkeyAuthentication yes 옵션 활성화
     - name: Add known_hosts
       run: |
         ssh-keyscan -t ed25519 43.201.110.51 >> ~/.ssh/known_hosts  # known_hosts에 서버 아이피에 관한것을 등록해주는 작업
