@@ -14,6 +14,10 @@ jobs: #진행되는 잡에 대한 정보
       with:
         distribution: 'zulu' # See 'Supported distributions' for available options
         java-version: '21'
+    - name: Build with Gradle
+      run: |   # 액션 대신에 리눅스 명령어 입력 가능   | 는 명령이 여러 줄이다.
+        chmod +x ./gradlew
+        ./gradlew build
     - name: Set SSH key permissions #개인키 만드는 부분
       run: |
         mkdir -p ~/.ssh
